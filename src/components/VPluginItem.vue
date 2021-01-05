@@ -1,0 +1,68 @@
+<template>
+  <div class="bg-dark text-light flex-column align-items-start my-1 custom-border shadow-sm" @click="goToPlugin()">
+    <div class="row g-0 main-area flex-nowrap">
+      <div class="img-container">
+        <img :src="plugin.imageUrl">
+      </div>
+      <div class="card-body pb-0 d-flex flex-column text-start">
+        <h5 class="card-text text-nowrap overflow-hidden">{{ plugin.name }}</h5>
+        <p class="p-2 overflow-hidden">{{ plugin.description }}</p>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center">
+          <small><i class="fas fa-user-alt"></i><strong class="ms-2">{{ plugin.creator.username }}</strong></small>
+          <small><i class="fas fa-globe"></i><strong class="ms-2">{{ serverDistroName }}</strong></small>
+          <small class="text-muted"><i class="fas fa-star me-1"></i>{{ plugin.starCount }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import { PluginResponse, ServerDistro } from '@/services/responses/pluginResponse'
+
+@Component({})
+export default class VPluginItem extends Vue {
+  @Prop()
+  plugin!: PluginResponse
+
+  @Prop({ default: false })
+  edit!: boolean
+
+  get serverDistroName () {
+    return ServerDistro[this.plugin.serverDistroId]
+  }
+
+  goToPlugin () {
+    if (this.edit) {
+      this.$router.push(`/me/editplugin/${this.plugin.id}`)
+    } else {
+      this.$router.push(`/plugin/${this.plugin.id}`)
+    }
+  }
+}
+</script>
+<style scoped lang="stylus">
+.custom-border
+  border gray 1px solid
+  border-radius 15px
+  overflow hidden
+  transition border-color 0.05s ease-in-out
+  &:hover
+    cursor pointer
+    border-color white
+.main-area
+  height 175px
+  p
+    height 50%
+    margin-bottom 0
+  hr
+    margin 0.5rem 0
+  .img-container
+    max-width 30%
+    img
+      object-fit cover
+      width 100%
+      height 100%
+</style>
