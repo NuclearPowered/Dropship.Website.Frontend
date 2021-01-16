@@ -7,13 +7,7 @@
           <span>reactor.gg</span>
         </router-link>
 
-        <button class="navbar-toggler"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavbarCollapsable">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="mainNavbarCollapsable">
+        <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav align-items-center">
             <li class="nav-item p-2">
               <router-link class="btn btn-outline-primary rounded-pill" to="/mods">

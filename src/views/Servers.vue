@@ -22,12 +22,16 @@
             </router-link>
           </div>
         </section>
-        <ul class="list-group" v-if="searchText.length === 0">
-          <VServerItem v-for="(server, i) in serverData" :key="i" :server="server" :edit="false" />
-        </ul>
-        <ul class="list-group" v-else>
+        <ul class="list-group" v-if="searchText.length > 0">
           <VServerItem v-for="(server, i) in searchData" :key="i" :server="server" :edit="false" />
         </ul>
+        <ul class="list-group" v-else-if="serverData.length > 0">
+          <VServerItem v-for="(server, i) in serverData" :key="i" :server="server" :edit="false" />
+        </ul>
+        <div v-else>
+          <SkeletonCard class="my-2"/>
+          <SkeletonCard class="my-2"/>
+        </div>
       </main>
       <aside class="col-md-3 d-none d-md-block">
         <div class="card bg-dark py-3">
@@ -64,9 +68,10 @@ import { Route } from 'vue-router'
 import { ServerResponse } from '@/services/responses/serverResponse'
 import ServerListService from '@/services/serverListService'
 import VServerItem from '@/components/VServerItem.vue'
+import SkeletonCard from '@/components/SkeletonCard.vue'
 
 @Component({
-  components: { VServerItem }
+  components: { VServerItem, SkeletonCard }
 })
 export default class Servers extends Vue {
   get pageNum () {

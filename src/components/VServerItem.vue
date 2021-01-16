@@ -9,7 +9,7 @@
         <p class="p-2 overflow-hidden">{{ server.description }}</p>
         <hr>
         <div class="d-flex justify-content-between align-items-center">
-          <small><i class="fas fa-user-alt"></i><strong class="ms-2">{{ server.owner.username }}</strong></small>
+          <small class="d-none d-sm-inline"><i class="fas fa-user-alt"></i><strong class="ms-2">{{ server.owner.username }}</strong></small>
           <small><i class="fas fa-globe"></i><strong class="ms-2">{{ ipPort }}</strong></small>
           <small class="text-muted"><i class="fas fa-star me-1"></i>{{ server.starCount }}</small>
         </div>
@@ -32,7 +32,7 @@ export default class VServerItem extends Vue {
   edit!: boolean
 
   get ipPort () {
-    return ServerListService.num2dot(this.server.ipAddress) + ':' + this.server.port
+    return ServerListService.num2dot(this.server.ipAddress)
   }
 
   goToServer () {

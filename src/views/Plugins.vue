@@ -22,12 +22,16 @@
             </router-link>
           </div>
         </section>
-        <ul class="list-group" v-if="searchText.length === 0">
-          <VPluginItem v-for="(plugin, i) in pluginData" :key="i" :plugin="plugin" :edit="false" />
+        <ul class="list-group" v-if="searchText.length > 0">
+          <VPluginItem v-for="(server, i) in searchData" :key="i" :server="server" :edit="false" />
         </ul>
-        <ul class="list-group" v-else>
-          <VPluginItem v-for="(plugin, i) in searchData" :key="i" :plugin="plugin" :edit="false" />
+        <ul class="list-group" v-else-if="pluginData.length > 0">
+          <VPluginItem v-for="(server, i) in pluginData" :key="i" :server="server" :edit="false" />
         </ul>
+        <div v-else>
+          <SkeletonCard class="my-2"/>
+          <SkeletonCard class="my-2"/>
+        </div>
       </main>
       <aside class="col-md-3 d-none d-md-block">
         <div class="card bg-dark py-3">
@@ -64,9 +68,10 @@ import { Route } from 'vue-router'
 import { PluginResponse } from '@/services/responses/pluginResponse'
 import PluginService from '@/services/pluginService'
 import VPluginItem from '@/components/VPluginItem.vue'
+import SkeletonCard from '@/components/SkeletonCard.vue'
 
 @Component({
-  components: { VPluginItem }
+  components: { VPluginItem, SkeletonCard }
 })
 export default class Plugins extends Vue {
   get pageNum () {

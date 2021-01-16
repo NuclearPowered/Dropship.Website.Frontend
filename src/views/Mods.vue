@@ -22,12 +22,16 @@
             </router-link>
           </div>
         </section>
-        <ul class="list-group" v-if="searchText.length === 0">
-          <VModItem v-for="(mod, i) in modData" :key="i" :mod="mod" :edit="false" />
+        <ul class="list-group" v-if="searchText.length > 0">
+          <VModItem v-for="(server, i) in searchData" :key="i" :server="server" :edit="false" />
         </ul>
-        <ul class="list-group" v-else>
-          <VModItem v-for="(mod, i) in searchData" :key="i" :mod="mod" :edit="false" />
+        <ul class="list-group" v-else-if="modData.length > 0">
+          <VModItem v-for="(server, i) in modData" :key="i" :server="server" :edit="false" />
         </ul>
+        <div v-else>
+          <SkeletonCard class="my-2"/>
+          <SkeletonCard class="my-2"/>
+        </div>
       </main>
       <aside class="col-md-3 d-none d-md-block">
         <div class="card bg-dark py-3">
@@ -64,9 +68,10 @@ import ModService from '@/services/modService'
 import { ModResponse } from '@/services/responses/modResponse'
 import VModItem from '@/components/VModItem.vue'
 import { Route } from 'vue-router'
+import SkeletonCard from '@/components/SkeletonCard.vue'
 
 @Component({
-  components: { VModItem }
+  components: { SkeletonCard, VModItem }
 })
 export default class Mods extends Vue {
   get pageNum () {

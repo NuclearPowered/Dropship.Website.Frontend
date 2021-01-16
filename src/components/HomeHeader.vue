@@ -1,7 +1,7 @@
 <template>
   <section class="text-light">
     <div class="row">
-      <div class="col-xxl-4 col-sm-6 col-12">
+      <div class="col-xxl-4 col-sm-6 col-12 pt-3">
         <div class="card bg-dark p-3 h-100">
           <h1 class="card-title fw-bold">Welcome to Dropship Online!</h1>
           <div class="card-body d-flex flex-column justify-content-between">
@@ -20,16 +20,19 @@
           </div>
         </div>
       </div>
-      <div class="col-xxl-4 d-none d-xxl-block">
+      <div class="col-xxl-4 d-none d-xxl-block pt-3">
         <div class="card bg-dark p-3 h-100" style="min-height: 225px">
           <h1 class="card-title fw-bold">Featured Mods</h1>
-          <div class="list-group" v-if="featuredMods !== []">
+          <div class="list-group" v-if="featuredMods.length > 0">
             <VLargeModItem v-for="(mod, i) in featuredMods" :key="i" :mod="mod" />
           </div>
-          <h6 v-else>Sorry! Couldn't fetch mods from server</h6>
+          <div v-else>
+            <SkeletonCard class="my-2"/>
+            <SkeletonCard class="my-2"/>
+          </div>
         </div>
       </div>
-      <div class="col-xxl-4 col-sm-6 col-12">
+      <div class="col-xxl-4 col-sm-6 col-12 pt-3">
         <div class="card bg-dark p-3" v-if="!$store.state.loggedIn">
           <h5 class="card-title text-center">Sign In</h5>
           <LoginForm @login="loginAttempt($event)"/>
@@ -59,9 +62,10 @@ import VLargeModItem from '@/components/VLargeModItem.vue'
 import { ModResponse } from '@/services/responses/modResponse'
 import ModService from '@/services/modService'
 import consts from '@/consts'
+import SkeletonCard from '@/components/SkeletonCard.vue'
 
 @Component({
-  components: { VLargeModItem, LoginForm }
+  components: { SkeletonCard, VLargeModItem, LoginForm }
 })
 export default class HomeHeader extends Vue {
   dropshipDownloadUrl = consts.DROPSHIP_DL_URL;
