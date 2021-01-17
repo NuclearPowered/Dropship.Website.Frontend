@@ -23,10 +23,10 @@
           </div>
         </section>
         <ul class="list-group" v-if="searchText.length > 0">
-          <VModItem v-for="(server, i) in searchData" :key="i" :server="server" :edit="false" />
+          <VModItem v-for="(mod, i) in searchData" :key="i" :mod="mod" :edit="false" />
         </ul>
         <ul class="list-group" v-else-if="modData.length > 0">
-          <VModItem v-for="(server, i) in modData" :key="i" :server="server" :edit="false" />
+          <VModItem v-for="(mod, i) in modData" :key="i" :mod="mod" :edit="false" />
         </ul>
         <div v-else>
           <SkeletonCard class="my-2"/>

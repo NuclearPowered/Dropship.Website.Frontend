@@ -1,7 +1,6 @@
 import webapi from '@/services/webapi'
 import { GenericResponseWithData, GenericResponse } from '@/services/responses/genericResponse'
 import { ModResponse, ModBuildResponse } from '@/services/responses/modResponse'
-import axios from 'axios'
 import store from '@/store'
 
 export default class ModService {
@@ -46,7 +45,7 @@ export default class ModService {
 
   static async deleteMod (id: number) {
     try {
-      await axios.delete(`http://localhost:5000/api/mods/${id}`, {
+      await webapi().delete(`/api/mods/${id}`, {
         headers: { Authorization: `Bearer ${store.state.jwt}` }
       })
     } catch (e) {

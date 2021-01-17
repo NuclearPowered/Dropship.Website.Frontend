@@ -23,10 +23,10 @@
           </div>
         </section>
         <ul class="list-group" v-if="searchText.length > 0">
-          <VPluginItem v-for="(server, i) in searchData" :key="i" :server="server" :edit="false" />
+          <VPluginItem v-for="(plugin, i) in searchData" :key="i" :plugin="plugin" :edit="false" />
         </ul>
         <ul class="list-group" v-else-if="pluginData.length > 0">
-          <VPluginItem v-for="(server, i) in pluginData" :key="i" :server="server" :edit="false" />
+          <VPluginItem v-for="(plugin, i) in pluginData" :key="i" :plugin="plugin" :edit="false" />
         </ul>
         <div v-else>
           <SkeletonCard class="my-2"/>
