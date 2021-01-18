@@ -5,19 +5,24 @@
         <h3 class="text-center">{{ modData.name }}</h3>
       </section>
       <section class="row justify-content-around">
-        <main class="col-md-8">
+        <main class="col-lg-8">
           <div class="card main-card bg-dark mb-3">
             <div class="row g-0">
-              <div class="w-25">
-                <img :src="modData.imageUrl" ref="cardimage">
+              <div class="col-4">
+                <img :src="modData.imageUrl" ref="img">
               </div>
-              <div class="w-75">
-                <div class="card-body text-start" ref="cardbody">
+              <div class="col-8">
+                <div class="card-body text-start" ref="body">
                   <p class="card-text overflow-hidden">{{ modData.description }}</p>
                   <hr>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-user-alt"></i> Created by {{ modData.creator.username }}</span>
-                    <small class="text-muted">{{ modData.guid }}</small>
+                  <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <span>
+                      <i class="fas fa-user-alt pe-2"></i>
+                      <span class="d-none d-sm-inline">Created by</span>
+                      <!-- {{ modData.creator.username }} -->
+                      Rose hall sanae L
+                    </span>
+                    <small class="d-none d-sm-inline  text-muted">{{ modData.guid }}</small>
                   </div>
                 </div>
               </div>
@@ -30,10 +35,10 @@
                         :build="modBuild" :edit="false" @dlstart="addStar($event)"/>
           </ul>
         </main>
-        <aside class="col-md-3 d-none d-md-block">
+        <aside class="col-lg-3 d-none d-lg-block">
           <div class="card bg-dark py-3">
             <h3 class="card-title fw-bold text-center">How to</h3>
-            <div class="card-body">
+            <div class="card-body text-start">
               <ul style="margin-left: -10px">
                 <li>You can browse this page to find the version of the mod you want to download.</li>
                 <li>The latest version of the mod is on top</li>
@@ -43,7 +48,7 @@
               <hr>
               <h3 class="card-title fw-bold text-center">Updating your mod</h3>
               <div class="card-body">
-                <ul style="margin-left: -10px">
+                <ul style="margin-left: -10px" class="text-start">
                   <li>You can update mod information or upload a new version of your mod</li>
                   <li>Go to your profile and click the mod you want to update, or click the button below, to update the mod.</li>
                 </ul>
@@ -100,9 +105,9 @@ export default class ModPage extends Vue {
   }
 
   cardHeight () {
-    if (this.$refs.cardimage) {
-      (this.$refs.cardimage as HTMLElement).style.height =
-      `${(this.$refs.cardbody as HTMLElement).clientHeight}px`
+    if (this.$refs.img) {
+      (this.$refs.img as HTMLElement).style.height =
+      `${(this.$refs.body as HTMLElement).clientHeight}px`
     }
     requestAnimationFrame(this.cardHeight)
   }
@@ -119,10 +124,14 @@ export default class ModPage extends Vue {
 </script>
 <style scoped lang="stylus">
 .main-card
+  min-height 175px
   p
-    margin-bottom 0px
+    min-height 125px
+    margin-bottom 0
   hr
     margin 0.5rem 0
   img
+    object-fit cover
     width 100%
+    height 100%
 </style>

@@ -5,22 +5,28 @@
         <h3 class="text-center">{{ pluginData.name }}</h3>
       </section>
       <section class="row justify-content-around">
-        <main class="col-md-8">
+        <main class="col-lg-8">
           <div class="card main-card bg-dark mb-3">
             <div class="row g-0">
-              <div class="w-25">
-                <img :src="pluginData.imageUrl" ref="cardimage">
+              <div class="col-4">
+                <img :src="pluginData.imageUrl" ref="img">
               </div>
-              <div class="w-75">
-                <div class="card-body text-start" ref="cardbody">
+              <div class="col-8">
+                <div class="card-body text-start" ref="body">
                   <p class="card-text overflow-hidden">{{ pluginData.description }}</p>
                   <hr>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                      <div><i class="fas fa-user-alt"></i> Created by {{ pluginData.creator.username }}</div>
-                      <div><i class="fas fa-globe"></i> For {{ serverDistroName }}</div>
-                    </div>
-                    <small class="text-muted">{{ pluginData.guid }}</small>
+                  <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <span>
+                      <i class="fas fa-user-alt pe-2"></i>
+                      <span class="d-none d-md-inline">Created by</span>
+                      {{ pluginData.creator.username }}
+                    </span>
+                    <span>
+                      <i class="fas fa-globe pe-1"></i>
+                      <span class="d-none d-sm-inline">For</span>
+                      {{ serverDistroName }}
+                    </span>
+                    <small class="d-none d-sm-inline text-muted">{{ pluginData.guid }}</small>
                   </div>
                 </div>
               </div>
@@ -33,10 +39,10 @@
                         :build="pluginBuild" :edit="false" @dlstart="addStar($event)"/>
           </ul>
         </main>
-        <aside class="col-md-3 d-none d-md-block">
+        <aside class="col-lg-3 d-none d-lg-block">
           <div class="card bg-dark py-3">
             <h3 class="card-title fw-bold text-center">How to</h3>
-            <div class="card-body">
+            <div class="card-body text-start">
               <ul style="margin-left: -10px">
                 <li>You can browse this page to find the version of the plugin you want to download.</li>
                 <li>The latest version of the plugin is on top</li>
@@ -46,7 +52,7 @@
               <hr>
               <h3 class="card-title fw-bold text-center">Updating your plugin</h3>
               <div class="card-body">
-                <ul style="margin-left: -10px">
+                <ul style="margin-left: -10px" class="text-start">
                   <li>You can update plugin information or upload a new version of your plugin</li>
                   <li>Go to your profile and click the plugin you want to update, or click the button below, to update the plugin.</li>
                 </ul>
@@ -107,9 +113,9 @@ export default class PluginPage extends Vue {
   }
 
   cardHeight () {
-    if (this.$refs.cardimage) {
-      (this.$refs.cardimage as HTMLElement).style.height =
-      `${(this.$refs.cardbody as HTMLElement).clientHeight}px`
+    if (this.$refs.img) {
+      (this.$refs.img as HTMLElement).style.height =
+      `${(this.$refs.body as HTMLElement).clientHeight}px`
     }
     requestAnimationFrame(this.cardHeight)
   }
@@ -126,10 +132,14 @@ export default class PluginPage extends Vue {
 </script>
 <style scoped lang="stylus">
 .main-card
+  min-height 175px
   p
-    margin-bottom 0px
+    min-height 125px
+    margin-bottom 0
   hr
     margin 0.5rem 0
   img
+    object-fit cover
     width 100%
+    height 100%
 </style>

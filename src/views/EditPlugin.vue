@@ -88,9 +88,9 @@
           </div>
         </main>
         <aside class="col-md-4 col-12">
-          <div class="card bg-dark py-3">
+          <div class="card bg-dark py-3 my-3">
             <h3 class="card-title fw-bold text-center">How to</h3>
-            <div class="card-body">
+            <div class="card-body text-start">
               <ul style="margin-left: -10px" v-if="newEdit">
                 <li>Here, you can create a new plugin and add the .dll</li>
                 <li>We automatically fetch the plugin build artifact by the GitHub repo's releases</li>
@@ -104,7 +104,7 @@
               </ul>
             </div>
           </div>
-          <div class="card bg-dark py-3" v-if="!newEdit">
+          <div class="card bg-dark py-3 my-3" v-if="!newEdit">
             <h3 class="card-title fw-bold text-center">Delete Plugin</h3>
             <div class="card-body">
               <p>Are you sure you want to delete your plugin? This action cannot be reverted. Click below to confirm.</p>

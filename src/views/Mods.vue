@@ -16,7 +16,7 @@
             <router-link :to="`/mods/page/${this.pageNum > 1 ? this.pageNum - 1 : 1}`">
               <i class="fs-4 fas fa-arrow-circle-left"></i>
             </router-link>
-            <strong><span class="d-none d-sm-inline">Page:</span> {{ this.pageNum }}</strong>
+            <strong><span class="d-none d-lg-inline">Page:</span> {{ this.pageNum }}</strong>
             <router-link :to="`/mods/page/${this.pageNum + 1}`">
               <i class="fs-4 fas fa-arrow-circle-right"></i>
             </router-link>
@@ -36,7 +36,7 @@
       <aside class="col-md-3 d-none d-md-block">
         <div class="card bg-dark py-3">
           <h3 class="card-title fw-bold text-center">How to</h3>
-          <div class="card-body">
+          <div class="card-body text-start">
             <ul style="margin-left: -10px">
               <li>You can browse mods by using the page navigation buttons.</li>
               <li>Search for mods using the search bar.</li>
@@ -45,7 +45,7 @@
           <hr>
           <h3 class="card-title fw-bold text-center">Uploading Mods</h3>
           <div class="card-body">
-            <ul style="margin-left: -10px">
+            <ul style="margin-left: -10px" class="text-start">
               <li>First, you need to have an account.
                 <router-link to="/login">Click here to login</router-link> or
                 <router-link to="/signup"> signup.</router-link></li>

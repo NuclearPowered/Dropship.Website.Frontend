@@ -5,7 +5,7 @@ const consts = {
 
 if (window.location.hostname === 'localhost') {
   // Assume we are in dev environment
-  consts.WEBAPI_URL = 'http://localhost:5000'
+  // consts.WEBAPI_URL = 'http://localhost:5000'
 }
 
 Object.freeze(consts)

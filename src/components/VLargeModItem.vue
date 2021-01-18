@@ -6,9 +6,9 @@
       </div>
       <div class="card-body pb-0 d-flex flex-column text-start">
         <h5 class="card-text text-nowrap overflow-hidden">{{ mod.name }}</h5>
-        <p class="p-2 overflow-hidden">{{ mod.description }}</p>
+        <p class="card-text overflow-hidden">{{ mod.description }}</p>
         <hr>
-        <div class="d-flex justify-content-between align-items-center card-footer">
+        <div class="d-flex justify-content-between align-items-center">
           <small><i class="fas fa-user-alt"></i><strong class="ms-2">{{ mod.creator.username }}</strong></small>
           <small class="text-muted"><i class="fas fa-star me-1"></i>{{ mod.starCount }}</small>
         </div>
@@ -48,21 +48,16 @@ export default class VLargeModItem extends Vue {
     cursor pointer
     border-color white
 .main-area
-  max-height 300px
+  height 175px
   p
-    height 60%
-    width 100%
+    height 50%
+    margin-bottom 0
   hr
     margin 0.5rem 0
-    width 100%
-  h5
-    width 90%
   .img-container
     max-width 30%
     img
       object-fit cover
       width 100%
       height 100%
-  .card-footer
-    width 95%
 </style>
