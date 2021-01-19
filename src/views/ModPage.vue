@@ -19,8 +19,7 @@
                     <span>
                       <i class="fas fa-user-alt pe-2"></i>
                       <span class="d-none d-sm-inline">Created by</span>
-                      <!-- {{ modData.creator.username }} -->
-                      Rose hall sanae L
+                      {{ modData.creator.username }}
                     </span>
                     <small class="d-none d-sm-inline  text-muted">{{ modData.guid }}</small>
                   </div>
