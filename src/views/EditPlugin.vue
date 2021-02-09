@@ -130,7 +130,7 @@ import { ValidationObserver, ValidationProvider } from 'vee-validate'
 import axios from 'axios'
 import PluginService from '@/services/pluginService'
 import { ServerDistro } from '@/services/responses/pluginResponse'
-import { ImageUploadService } from '@/services/webapi'
+import { AssetUploadService } from '@/services/uploadService'
 
 @Component({
   components: { VBuildItem, ValidationObserver, ValidationProvider }
@@ -179,7 +179,7 @@ export default class EditPlugin extends Vue {
       }
 
       if (this.imageFile) {
-        this.imageUrl = await ImageUploadService.uploadImage(this.imageFile)
+        this.imageUrl = await AssetUploadService.uploadAsset(this.imageFile)
       }
 
       if (!this.imageUrl) {
@@ -188,12 +188,12 @@ export default class EditPlugin extends Vue {
       }
 
       if (this.newEdit) {
-        const plugin = await PluginService.createPlugin(this.name, this.guid, this.description, this.serverDistroId, this.imageUrl)
+        const plugin = await PluginService.createPlugin(this.name, this.guid, this.description, '', this.serverDistroId, this.imageUrl)
         if (plugin) {
           await PluginService.uploadPluginBuild(plugin.id, version, this.pluginName, downloadUrl)
         }
       } else {
-        const plugin = await PluginService.updatePlugin(this.pluginId, this.name, this.description, this.imageUrl)
+        const plugin = await PluginService.updatePlugin(this.pluginId, this.name, this.description, '', this.imageUrl)
         if (plugin) {
           await PluginService.uploadPluginBuild(plugin.id, version, this.pluginName, downloadUrl)
         }

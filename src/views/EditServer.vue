@@ -88,7 +88,7 @@ import { Route } from 'vue-router'
 import VBuildItem from '@/components/VBuildItem.vue'
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
 import ServerListService from '@/services/serverListService'
-import { ImageUploadService } from '@/services/webapi'
+import { AssetUploadService } from '@/services/uploadService'
 
 @Component({
   components: { VBuildItem, ValidationObserver, ValidationProvider }
@@ -116,7 +116,7 @@ export default class EditServer extends Vue {
   async submit () {
     try {
       if (this.imageFile) {
-        this.imageUrl = await ImageUploadService.uploadImage(this.imageFile)
+        this.imageUrl = await AssetUploadService.uploadAsset(this.imageFile)
       }
 
       if (!this.imageUrl) {
