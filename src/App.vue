@@ -65,6 +65,10 @@ export default class App extends Vue {
   -moz-osx-font-smoothing grayscale
   text-align center
   color #2c3e50
+
+.text-ellipsis
+  text-overflow ellipsis
+
 .vh-except-header
   height calc(100vh - 70px)
 .min-vh-except-header

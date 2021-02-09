@@ -42,7 +42,7 @@
               <li>Search for mods using the search bar.</li>
             </ul>
           </div>
-          <hr>
+          <hr class="mx-2">
           <h3 class="card-title fw-bold text-center">Uploading Mods</h3>
           <div class="card-body">
             <ul style="margin-left: -10px" class="text-start">

@@ -54,8 +54,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import SpaceBackground from '@/components/SpaceBackground.vue'
-import HomeHeader from '@/components/HomeHeader.vue'
+import SpaceBackground from '@/components/Home/SpaceBackground.vue'
+import HomeHeader from '@/components/Home/HomeHeader.vue'
 
 @Component({
   components: { SpaceBackground, HomeHeader }

@@ -5,8 +5,8 @@
         <img :src="mod.imageUrl">
       </div>
       <div class="card-body pb-0 d-flex flex-column text-start">
-        <h5 class="card-text text-nowrap overflow-hidden">{{ mod.name }}</h5>
-        <p class="p-2 overflow-hidden">{{ mod.description }}</p>
+        <h5 class="card-text text-nowrap overflow-hidden text-ellipsis">{{ mod.name }}</h5>
+        <p class="p-2 overflow-hidden text-ellipsis">{{ mod.description }}</p>
         <hr>
         <div class="d-flex justify-content-between align-items-center">
           <small><i class="fas fa-user-alt"></i><strong class="ms-2">{{ mod.creator.username }}</strong></small>

@@ -3,10 +3,10 @@ import { GenericResponseWithData, GenericResponse } from '@/services/responses/g
 import { PluginBuildResponse, PluginResponse, ServerDistro } from '@/services/responses/pluginResponse'
 
 export default class PluginService {
-  static async createPlugin (name: string, guid: string, description: string, serverDistroId: ServerDistro, imageUrl: string) {
+  static async createPlugin (name: string, guid: string, description: string, markdownDescription: string, serverDistroId: ServerDistro, imageUrl: string) {
     try {
       const response: GenericResponse | GenericResponseWithData<PluginResponse> =
-        (await webapi().post('/api/plugins/create', { name, guid, description, serverDistroId, imageUrl })).data
+        (await webapi().post('/api/plugins/create', { name, guid, description, markdownDescription, serverDistroId, imageUrl })).data
 
       if (response.success) {
         return (response as GenericResponseWithData<PluginResponse>).data
@@ -16,10 +16,10 @@ export default class PluginService {
     }
   }
 
-  static async updatePlugin (id: number, name: string, description: string, imageUrl: string) {
+  static async updatePlugin (id: number, name: string, description: string, markdownDescription: string, imageUrl: string) {
     try {
       const response: GenericResponse | GenericResponseWithData<PluginResponse> =
-        (await webapi().post('/api/plugins/update', { id, name, description, imageUrl })).data
+        (await webapi().post('/api/plugins/update', { id, name, description, markdownDescription, imageUrl })).data
 
       if (response.success) {
         return (response as GenericResponseWithData<PluginResponse>).data

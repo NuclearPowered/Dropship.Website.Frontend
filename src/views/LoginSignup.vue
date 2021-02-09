@@ -25,9 +25,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import LoginForm from '@/components/LoginForm.vue'
+import LoginForm from '@/components/LoginSignup/LoginForm.vue'
 import AuthService from '@/services/authService'
-import SignUpForm from '@/components/SignUpForm.vue'
+import SignUpForm from '@/components/LoginSignup/SignUpForm.vue'
 
 @Component({
   components: { LoginForm, SignUpForm }

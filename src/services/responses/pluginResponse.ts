@@ -5,8 +5,11 @@ export interface PluginResponse {
   guid: string;
   name: string;
   description: string;
+  markdownDescription: string;
   starCount: number;
   imageUrl: string;
+  createdAt: string;
+  updatedAt: string;
   serverDistroId: ServerDistro;
   creator: UserResponse;
 }
@@ -21,8 +24,7 @@ export interface PluginBuildResponse {
   deleted: boolean;
 }
 
-export enum ServerDistro
-{
+export enum ServerDistro {
   Unknown,
   Impostor,
   NodePolus

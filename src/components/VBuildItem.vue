@@ -1,10 +1,13 @@
 <template>
-  <li class="bg-dark text-light list-group-item flex-column align-items-start my-1 custom-border shadow-sm">
-    <div class="d-flex w-100 justify-content-between align-items-center">
-      <h5 class="mb-1">{{ build.version }}</h5>
-      <a class="btn btn-info" :href="build.downloadUrl" @click="$emit('dlstart', parentId)">Download <i class="fas fa-download"></i></a>
+  <div class="bg-dark text-light custom-border p-2">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="col-8 text-start text-nowrap text-ellipsis">
+        <p class="mb-1">{{ build.version }}</p>
+        <small class="mb-1 fst-italic">{{ build.fileName }}</small>
+      </div>
+      <a class="btn btn-info" :href="build.downloadUrl" @click="$emit('dlstart', parentId)"><i class="fas fa-download"></i></a>
     </div>
-  </li>
+  </div>
 </template>
 
 <script lang="ts">
@@ -25,8 +28,9 @@ export default class VBuildItem extends Vue {
 }
 </script>
 <style scoped lang="stylus">
-li.custom-border
+.custom-border
   border gray 1px solid
+  border-radius 5px
   border-top gray 1px solid
   transition border-color 0.05s ease-in-out
   &:hover

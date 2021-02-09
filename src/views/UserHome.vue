@@ -46,6 +46,7 @@
           </div>
         </section>
         <hr class="mb-5">
+        <h3>Your Assets</h3>
         <section class="pb-4">
           <ul class="nav nav-tabs tab-nav">
             <li class="nav-item flex-grow-1" v-for="page in pages" :key="page.id" @click="currentPage = page.id">
@@ -96,15 +97,15 @@ export default class UserHome extends Vue {
   pages = [
     {
       id: 1,
-      name: 'Your Mods'
+      name: 'Mods'
     },
     {
       id: 2,
-      name: 'Your Plugins'
+      name: 'Plugins'
     },
     {
       id: 3,
-      name: 'Your Servers'
+      name: 'Servers'
     }
   ]
 

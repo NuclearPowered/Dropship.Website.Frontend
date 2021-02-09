@@ -57,8 +57,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import AuthService from '@/services/authService'
-import LoginForm from '@/components/LoginForm.vue'
-import VLargeModItem from '@/components/VLargeModItem.vue'
+import LoginForm from '@/components/LoginSignup/LoginForm.vue'
+import VLargeModItem from '@/components/Home/VLargeModItem.vue'
 import { ModResponse } from '@/services/responses/modResponse'
 import ModService from '@/services/modService'
 import consts from '@/consts'

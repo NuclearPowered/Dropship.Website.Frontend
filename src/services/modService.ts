@@ -2,12 +2,13 @@ import webapi from '@/services/webapi'
 import { GenericResponseWithData, GenericResponse } from '@/services/responses/genericResponse'
 import { ModResponse, ModBuildResponse } from '@/services/responses/modResponse'
 import store from '@/store'
+import { GamePlatform } from '@/models/gameVersionPlatform'
 
 export default class ModService {
-  static async createMod (name: string, guid: string, description: string, imageUrl: string) {
+  static async createMod (name: string, guid: string, description: string, markdownDescription: string, imageUrl: string) {
     try {
       const response: GenericResponse | GenericResponseWithData<ModResponse> =
-        (await webapi().post('/api/mods/create', { name, guid, description, imageUrl })).data
+        (await webapi().post('/api/mods/create', { name, guid, description, markdownDescription, imageUrl })).data
 
       if (response.success) {
         return (response as GenericResponseWithData<ModResponse>).data
@@ -17,10 +18,10 @@ export default class ModService {
     }
   }
 
-  static async updateMod (id: number, name: string, description: string, imageUrl: string) {
+  static async updateMod (id: number, name: string, description: string, markdownDescription: string, imageUrl: string) {
     try {
       const response: GenericResponse | GenericResponseWithData<ModResponse> =
-        (await webapi().post('/api/mods/update', { id, name, description, imageUrl })).data
+        (await webapi().post('/api/mods/update', { id, name, description, markdownDescription, imageUrl })).data
 
       if (response.success) {
         return (response as GenericResponseWithData<ModResponse>).data
@@ -30,10 +31,10 @@ export default class ModService {
     }
   }
 
-  static async uploadModBuild (modId: number, version: string, fileName: string, downloadUrl: string) {
+  static async uploadModBuild (modId: number, version: string, fileName: string, gameVersion: number, gamePlatform: GamePlatform, downloadUrl: string) {
     try {
       const response: GenericResponse | GenericResponseWithData<ModBuildResponse> =
-        (await webapi().post('/api/modbuilds/create', { modId, version, fileName, downloadUrl, dependencyIds: [] })).data
+        (await webapi().post('/api/modbuilds/create', { modId, version, fileName, gameVersion, gamePlatform, downloadUrl, dependencyIds: [] })).data
 
       if (response.success) {
         return (response as GenericResponseWithData<ModBuildResponse>).data
