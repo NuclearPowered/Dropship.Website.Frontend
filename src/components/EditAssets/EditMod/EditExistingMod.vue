@@ -154,6 +154,7 @@ export default class EditExistingMod extends Vue {
   name = ''
   description = ''
   markdownDescription = ''
+  imageUrl = ''
   imageFile?: File = undefined
 
   modBuildInfo: Partial<{ downloadUrl: string; fileName: string; version: string }> = {}
@@ -211,18 +212,19 @@ export default class EditExistingMod extends Vue {
 
   modSubmitError = false;
   async submitMod () {
-    const imageUrl = await AssetUploadService.uploadAsset(this.imageFile)
+    if (this.imageFile) {
+      this.imageUrl = await AssetUploadService.uploadAsset(this.imageFile) ?? ''
+    }
 
     if (this.modBuildInfo.downloadUrl &&
         this.modBuildInfo.version &&
-        this.modBuildInfo.fileName &&
-        imageUrl) {
+        this.modBuildInfo.fileName) {
       await ModService.updateMod(
         this.modId,
         this.name,
         this.description,
         this.markdownDescription,
-        imageUrl
+        this.imageUrl
       )
     } else {
       this.modSubmitError = true
@@ -231,6 +233,21 @@ export default class EditExistingMod extends Vue {
       }, 4000)
     }
   }
+
+  refresh (modId: number) {
+    ModService.getModById(modId).then(response => {
+      if (response) {
+        if (response.creator.id !== this.$store.state.userId) {
+          this.$router.push('/')
+        }
+        this.name = response.name
+        this.description = response.description
+        this.markdownDescription = response.markdownDescription
+        this.imageUrl = response.imageUrl
+      }
+    })
+  }
+  mounted () { this.refresh(this.modId) }
 }
 </script>
 <style scoped lang="stylus">
