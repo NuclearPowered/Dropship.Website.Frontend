@@ -1,13 +1,13 @@
 <template>
   <div class="card bg-dark py-3">
     <h4 class="card-title fw-bold text-center">Mod info</h4>
-    <div class="card-body text-start">
+    <div class="px-3 text-start">
       <p class="info-list-item"><small>Updated:</small> {{ updatedDate }}</p>
       <p class="info-list-item"><small>Created:</small> {{ createdDate }}</p>
       <p class="info-list-item"><small>Game Platform:</small> {{ gamePlatformString }}</p>
       <p class="info-list-item"><small>Stars:</small> {{ modData.starCount }}</p>
     </div>
-    <div v-if="latestBuild.id !== -1" class="px-2">
+    <div v-if="latestBuild" class="px-2">
       <hr>
       <h4 class="card-title fw-bold">Latest file</h4>
       <VBuildItem :build="latestBuild"/>
@@ -31,7 +31,7 @@ export default class ModPageHowTo extends Vue {
   @Prop({ default: 0 })
   gamePlatform!: GamePlatform
 
-  @Prop({ default: { id: -1 } })
+  @Prop()
   latestBuild!: ModBuildResponse
 
   splitDateTimeOffset (dateString: string): { date: string; time: string } {

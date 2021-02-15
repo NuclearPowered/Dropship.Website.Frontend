@@ -1,13 +1,13 @@
 <template>
   <div class="card bg-dark py-3">
     <h4 class="card-title fw-bold text-center">Mod info</h4>
-    <div class="card-body text-start">
+    <div class="px-3 text-start">
       <p class="info-list-item"><small>Updated:</small> {{ updatedDate }}</p>
       <p class="info-list-item"><small>Created:</small> {{ createdDate }}</p>
       <p class="info-list-item"><small>Server Distro:</small> {{ serverDistroString }}</p>
       <p class="info-list-item"><small>Stars:</small> {{ plugin.starCount }}</p>
     </div>
-    <div v-if="latestBuild.id !== -1" class="px-2">
+    <div v-if="latestBuild" class="px-2">
       <hr>
       <h4 class="card-title fw-bold">Latest file</h4>
       <VBuildItem :build="latestBuild"/>
@@ -27,7 +27,7 @@ export default class PluginPageSidebarInfo extends Vue {
   @Prop({ default: false })
   plugin!: PluginResponse
 
-  @Prop({ default: { id: -1 } })
+  @Prop()
   latestBuild!: PluginBuildResponse
 
   splitDateTimeOffset (dateString: string): { date: string; time: string } {

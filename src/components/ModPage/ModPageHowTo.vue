@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-dark py-3">
     <h3 class="card-title fw-bold text-center">How to</h3>
-    <div class="card-body text-start">
+    <div class="px-3 text-start">
       <ul style="margin-left: -10px">
         <li>You can browse this page to find the version of the mod you want to download.</li>
         <li>The latest version of the mod is on top</li>

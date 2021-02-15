@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-nicedark min-vh-except-header text-white">
-    <div class="container" v-if="pluginData.id !== -1">
+    <div v-if="pluginData.id !== -1">
       <section class="p-3">
         <h3 class="text-center">{{ pluginData.name }}</h3>
       </section>
@@ -8,11 +8,11 @@
         <main class="col-lg-8">
           <PluginPageCard :plugin="pluginData" />
           <hr>
-          <MarkdownRenderer :markdown="pluginData.markdownDescription" class="mb-3 p-2" />
+          <MarkdownRenderer :markdown="pluginData.markdownDescription" class="mb-3 p-3" />
           <h3>Download</h3>
           <PluginBuildTable :builds="pluginBuildData" />
         </main>
-        <aside class="col-lg-3 d-none d-lg-block">
+        <aside class="col-lg-4 mt-lg-0 mt-5 mb-3">
           <PluginPageSidebarInfo :plugin="pluginData" :latestBuild="pluginBuildData[0]" class="mb-3" />
           <PluginPageHowTo :owner="amOwner" :pluginId="pluginData.id" />
         </aside>

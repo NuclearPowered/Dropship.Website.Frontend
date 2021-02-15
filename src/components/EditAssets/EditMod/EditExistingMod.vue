@@ -59,7 +59,6 @@
       <button
         @click.prevent="submitModBuild()"
         class="btn btn-primary w-100 mt-4 mb-2"
-        :disabled="invalid"
       >
         Publish a new build <i class="fas fa-cloud-upload-alt"></i>
       </button>
@@ -215,17 +214,15 @@ export default class EditExistingMod extends Vue {
     if (this.imageFile) {
       this.imageUrl = await AssetUploadService.uploadAsset(this.imageFile) ?? ''
     }
-
-    if (this.modBuildInfo.downloadUrl &&
-        this.modBuildInfo.version &&
-        this.modBuildInfo.fileName) {
-      await ModService.updateMod(
-        this.modId,
-        this.name,
-        this.description,
-        this.markdownDescription,
-        this.imageUrl
-      )
+    const response = await ModService.updateMod(
+      this.modId,
+      this.name,
+      this.description,
+      this.markdownDescription,
+      this.imageUrl
+    )
+    if (response) {
+      await this.$router.push(`/mod/${this.modId}`)
     } else {
       this.modSubmitError = true
       setTimeout(() => {
@@ -247,6 +244,7 @@ export default class EditExistingMod extends Vue {
       }
     })
   }
+
   mounted () { this.refresh(this.modId) }
 }
 </script>

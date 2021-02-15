@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-dark" v-if="markdown !== ''">
+  <div class="card bg-dark text-start" v-if="markdown !== ''">
     <div class="markdown-renderer" v-html="renderedHtml"></div>
   </div>
 </template>

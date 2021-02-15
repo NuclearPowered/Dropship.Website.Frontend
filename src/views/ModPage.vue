@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-nicedark min-vh-except-header text-white">
-    <div class="container" v-if="modData.id !== -1">
+    <div v-if="modData.id !== -1">
       <section class="p-3">
         <h3 class="text-center">{{ modData.name }}</h3>
       </section>
@@ -8,11 +8,11 @@
         <main class="col-lg-8">
           <ModPageCard :modData="modData" />
           <hr>
-          <MarkdownRenderer :markdown="modData.markdownDescription" class="mb-3 p-2" />
+          <MarkdownRenderer :markdown="modData.markdownDescription" class="mb-3 p-3" />
           <h5>Download</h5>
           <ModBuildTable :builds="modBuildData" />
         </main>
-        <aside class="col-lg-3 d-none d-lg-block">
+        <aside class="col-lg-4 mt-lg-0 mt-5 mb-3">
           <ModPageSidebarInfo :modData="modData" :latestBuild="modBuildData[0]" class="mb-3"/>
           <ModPageHowTo :owner="amOwner" :modId="modData.id" />
         </aside>
