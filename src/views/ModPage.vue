@@ -13,7 +13,7 @@
           <ModBuildTable :builds="modBuildData" />
         </main>
         <aside class="col-lg-4 mt-lg-0 mt-5 mb-3">
-          <ModPageSidebarInfo :modData="modData" :latestBuild="modBuildData[0]" class="mb-3"/>
+          <ModPageSidebarInfo :modData="modData" :latestBuild="modBuildData[0]" v-if="modBuildData.length > 0" class="mb-3"/>
           <ModPageHowTo :owner="amOwner" :modId="modData.id" />
         </aside>
       </section>

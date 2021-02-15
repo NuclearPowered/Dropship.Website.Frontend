@@ -13,7 +13,7 @@
           <PluginBuildTable :builds="pluginBuildData" />
         </main>
         <aside class="col-lg-4 mt-lg-0 mt-5 mb-3">
-          <PluginPageSidebarInfo :plugin="pluginData" :latestBuild="pluginBuildData[0]" class="mb-3" />
+          <PluginPageSidebarInfo :plugin="pluginData" :latestBuild="pluginBuildData[0]" v-if="pluginBuildData.length > 0" class="mb-3" />
           <PluginPageHowTo :owner="amOwner" :pluginId="pluginData.id" />
         </aside>
       </section>

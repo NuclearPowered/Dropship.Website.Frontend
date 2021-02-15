@@ -7,7 +7,7 @@
       <p class="info-list-item"><small>Server Distro:</small> {{ serverDistroString }}</p>
       <p class="info-list-item"><small>Stars:</small> {{ plugin.starCount }}</p>
     </div>
-    <div v-if="latestBuild" class="px-2">
+    <div class="px-2">
       <hr>
       <h4 class="card-title fw-bold">Latest file</h4>
       <VBuildItem :build="latestBuild"/>

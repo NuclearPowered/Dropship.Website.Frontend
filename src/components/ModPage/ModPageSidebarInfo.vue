@@ -7,7 +7,7 @@
       <p class="info-list-item"><small>Game Platform:</small> {{ gamePlatformString }}</p>
       <p class="info-list-item"><small>Stars:</small> {{ modData.starCount }}</p>
     </div>
-    <div v-if="latestBuild" class="px-2">
+    <div class="px-2">
       <hr>
       <h4 class="card-title fw-bold">Latest file</h4>
       <VBuildItem :build="latestBuild"/>
@@ -19,7 +19,6 @@
 import { ModBuildResponse, ModResponse } from '@/services/responses/modResponse'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import VBuildItem from '@/components/VBuildItem.vue'
-import { GamePlatform } from '@/models/gameVersionPlatform'
 import GameVersion from '@/services/gameVersionService'
 
 @Component({
