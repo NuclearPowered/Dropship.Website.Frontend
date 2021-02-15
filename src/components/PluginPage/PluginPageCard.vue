@@ -11,7 +11,7 @@
           <div class="d-flex justify-content-between align-items-center flex-wrap">
             <span>
               <i class="fas fa-user-alt pe-2"></i>
-              <span class="d-none d-md-inline">Created by</span>
+              <span class="d-none d-xl-inline">Created by</span>
               {{ plugin.creator.username }}
             </span>
             <span>
@@ -19,7 +19,7 @@
               <span class="d-none d-sm-inline">For</span>
               {{ serverDistroName }}
             </span>
-            <small class="d-none d-sm-inline text-muted">{{ plugin.guid }}</small>
+            <small class="d-none d-md-inline text-muted">{{ plugin.guid }}</small>
           </div>
         </div>
       </div>

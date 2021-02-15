@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-nicedark min-vh-except-header text-white">
-    <div v-if="pluginData.id !== -1">
+    <div class="container" v-if="pluginData.id !== -1">
       <section class="p-3">
         <h3 class="text-center">{{ pluginData.name }}</h3>
       </section>
