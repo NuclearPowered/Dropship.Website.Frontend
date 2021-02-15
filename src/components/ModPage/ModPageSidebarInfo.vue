@@ -20,6 +20,7 @@ import { ModBuildResponse, ModResponse } from '@/services/responses/modResponse'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import VBuildItem from '@/components/VBuildItem.vue'
 import { GamePlatform } from '@/models/gameVersionPlatform'
+import GameVersion from '@/services/gameVersionService'
 
 @Component({
   components: { VBuildItem }
@@ -27,9 +28,6 @@ import { GamePlatform } from '@/models/gameVersionPlatform'
 export default class ModPageHowTo extends Vue {
   @Prop({ default: false })
   modData!: ModResponse
-
-  @Prop({ default: 0 })
-  gamePlatform!: GamePlatform
 
   @Prop()
   latestBuild!: ModBuildResponse
@@ -51,7 +49,8 @@ export default class ModPageHowTo extends Vue {
   }
 
   get gamePlatformString () {
-    return GamePlatform[this.gamePlatform]
+    const { year, month, day, rev } = GameVersion.fromVersionNumber(this.latestBuild.gameVersion)
+    return GameVersion.verPlatString(this.latestBuild.gamePlatform, year, month, day)
   }
 }
 </script>
