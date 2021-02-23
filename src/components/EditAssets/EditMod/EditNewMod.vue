@@ -206,6 +206,7 @@ export default class EditNewMod extends Vue {
           this.gameVerPlatInfo.platform,
           this.modBuildInfo.downloadUrl
         )
+        await this.$router.push(`/mod/${mod.id}`)
       }
     } else { this.badEdit() }
   }
