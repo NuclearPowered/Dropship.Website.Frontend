@@ -64,8 +64,22 @@
               <i class="fab fa-github pe-3 fs-4"></i> Github Releases
             </button>
             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#assetAccordion">
-              <div class="accordion-body">
-                <GithubReleaseChooser @change="handleGithubChoice($event)" />
+              <div class="accordion-body d-flex">
+                <div class="flex-grow-1 pe-3">
+                  <GithubReleaseChooser @change="handleGithubChoice($event)" />
+                </div>
+                <div>
+                  <ValidationProvider rules="required" v-slot="{ errors }">
+                    <label class="form-label">Game Version</label>
+                    <select
+                      class="form-control"
+                      v-model="gameVersionPlatform"
+                    >
+                      <option v-for="verPlat in versionPlatforms" :key="verPlat.name" :value="verPlat.name">{{ verPlat.name }}</option>
+                    </select>
+                    <span class="form-text text-danger">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                </div>
               </div>
             </div>
           </div>
@@ -152,7 +166,7 @@ export default class EditNewMod extends Vue {
   modBuildInfo: Partial<{ downloadUrl: string; fileName: string; version: string }> = {}
   semverVersion = ''
   versionPlatforms = GameVersion.List
-  gameVersionPlatform = '2020.12.9s'
+  gameVersionPlatform = '2021.3.5s'
 
   get gameVerPlatInfo () {
     return GameVersion.Map[this.gameVersionPlatform]
